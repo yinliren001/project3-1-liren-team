@@ -8,7 +8,9 @@
 //****************************************************************************************
 #include	<iostream>
 #include	<string>
-
+#include    <fstream>
+#include    <map>
+#include    <set>
 using namespace std;
 
 //****************************************************************************************
@@ -27,6 +29,13 @@ using namespace std;
 class	Catalog
 {
 	public:
+    
+    Catalog() {
+        this->myCatalog = *new map<uint64_t, map<uint64_t, string>>();
+        this->catalogNames = *new map<uint64_t, string>();
+        this->totalProductsInCatalog = *new map<uint64_t, uint64_t>;
+        this->catalogCount = 0;
+    }
 		//Given a category number and name, add it to the catalog. It will have an empty product list. 
 		//Return false if the category number already exists in the catalog, true otherwise.
 		bool		AddCategory(uint64_t categoryNumber, const string& name);
@@ -59,6 +68,10 @@ class	Catalog
 	private:
 	
 		// map declaration goes here
+    map<uint64_t, map<uint64_t, string>> myCatalog;
+    map<uint64_t, string> catalogNames;
+    uint64_t catalogCount;
+    map<uint64_t, uint64_t> totalProductsInCatalog;
 
 };
 
